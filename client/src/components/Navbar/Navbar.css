@@ -1,0 +1,23 @@
+.Navbar {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: rgb(71, 71, 71);
+  color: white;
+  display: flex;
+  font-size: 21px;
+  justify-content: space-between;
+}
+.left {
+  flex: 8;
+  text-align: left;
+}
+.right {
+  flex: 4;
+  display: flex;
+  justify-content: space-between;
+}
+a {
+  color: white;
+  text-decoration: none;
+}

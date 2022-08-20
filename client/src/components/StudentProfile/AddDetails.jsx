@@ -56,12 +56,17 @@ const AddDetails = () => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form style={{ marginTop: "60px" }} onSubmit={handleSubmit}>
+        <h2>Student Details</h2>
+        <div className="label">First Name</div>
         <input onChange={handleChange} id="first_name" type="text" />
+        <div className="label">Last Name</div>
         <input onChange={handleChange} id="last_name" type="text" />
+        <div className="label">Roll Number</div>
         <input onChange={handleChange} id="roll_no" type="text" />
+        <div className="label">Mobile Number</div>
         <input onChange={handleChange} id="mobile_no" type="text" />
-        <input type="submit" />
+        <button>Submit</button>
       </form>
     </div>
   );

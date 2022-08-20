@@ -1,7 +1,7 @@
 const { USER } = require("../actions/userAction");
 
 const init = {
-  user: {},
+  user: [],
 };
 export const userReducer = (state = init, { type, payload }) => {
   switch (type) {

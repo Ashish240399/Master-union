@@ -35,7 +35,7 @@ const Login = () => {
       } else if (data.message == "Add details") {
         alert("Logged in successfully.. Please add details");
         localStorage.setItem("email", JSON.stringify(form.email));
-        navigate("/");
+        navigate("/student-details");
       } else if (data.user) {
         localStorage.setItem("email", JSON.stringify(form.email));
         dispatch(user(data.user));
@@ -47,9 +47,12 @@ const Login = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input id="email" onChange={handleChange} type="email" />
+        <h2>Login Form</h2>
+        <div className="label">Email</div>
+        <input id="email" onChange={handleChange} type="text" />
+        <div className="label">Password</div>
         <input id="password" onChange={handleChange} type="password" />
-        <input type="submit" />
+        <button>Submit</button>
       </form>
     </div>
   );

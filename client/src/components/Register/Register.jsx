@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import "./Register.css";
 const Register = () => {
   const [form, setForm] = useState({
     email: "",
@@ -33,9 +33,12 @@ const Register = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <h2>Register Form</h2>
+        <div className="label">Email</div>
         <input id="email" onChange={handleChange} type="text" />
+        <div className="label">Password</div>
         <input id="password" onChange={handleChange} type="password" />
-        <input type="submit" />
+        <button>Submit</button>
       </form>
       <Link to="/login">
         <p>email already exists..Login</p>

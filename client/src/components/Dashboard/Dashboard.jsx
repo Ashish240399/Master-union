@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-
+import "./Dashboard.css";
 const Dashboard = () => {
   const [list, setList] = useState();
   useEffect(() => {
@@ -14,7 +14,7 @@ const Dashboard = () => {
   }
   console.log(list);
   return (
-    <div>
+    <div className="dashboard-container">
       {list ? (
         <table>
           <thead>

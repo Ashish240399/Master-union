@@ -1,0 +1,24 @@
+form {
+  width: 30%;
+  margin: auto;
+  border: 1px solid;
+  padding: 25px;
+  margin-top: 10%;
+  background-color: rgb(120, 120, 120);
+  color: white;
+}
+.label {
+  text-align: left;
+  padding-left: 10px;
+  margin-top: 20px;
+}
+form > input {
+  width: 90%;
+  padding: 10px;
+  margin-top: 10px;
+}
+form > button {
+  width: 40%;
+  padding: 10px;
+  margin-top: 30px;
+}
