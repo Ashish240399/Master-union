@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -22,7 +23,11 @@ const Register = () => {
       },
       body: JSON.stringify(form),
     }).then((response) => {
-      console.log(response);
+      if (response.status == 205) {
+        alert("Email already registered");
+      } else if (response.status == 200) {
+        alert("Registered successfully");
+      }
     });
   };
   return (
@@ -32,6 +37,9 @@ const Register = () => {
         <input id="password" onChange={handleChange} type="password" />
         <input type="submit" />
       </form>
+      <Link to="/login">
+        <p>email already exists..Login</p>
+      </Link>
     </div>
   );
 };

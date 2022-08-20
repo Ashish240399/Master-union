@@ -11,8 +11,11 @@ router.post("/", async (req, res) => {
 });
 router.get("/", async (req, res) => {
   try {
-    const data = await Dashboard.find().lean().exec();
-    return res.status(200).send(data);
+    const data = await Dashboard.find()
+      .populate({ path: "userId" })
+      .lean()
+      .exec();
+    return res.status(200).send({ data: data });
   } catch (error) {
     return res.status(500).json({ error: error });
   }
@@ -24,6 +27,17 @@ router.post("/:userId", async (req, res) => {
       { $set: { paid: true } }
     );
     return res.status(200).send(data);
+  } catch (error) {
+    return res.status(500).json({ error: error });
+  }
+});
+router.get("/:userId", async (req, res) => {
+  try {
+    const data = await Dashboard.find({ userId: req.params.userId })
+      .populate({ path: "userId" })
+      .lean()
+      .exec();
+    return res.status(200).send({ data: data });
   } catch (error) {
     return res.status(500).json({ error: error });
   }

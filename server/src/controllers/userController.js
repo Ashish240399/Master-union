@@ -9,9 +9,9 @@ router.post("/", async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 });
-router.get("/", async (req, res) => {
+router.get("/:email", async (req, res) => {
   try {
-    const user = await User.find().lean().exec();
+    const user = await User.find({ email: req.params.email });
     return res.status(200).send(user);
   } catch (error) {
     return res.status(500).json({ message: error.message });

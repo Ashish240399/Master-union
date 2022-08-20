@@ -5,7 +5,7 @@ const User = require("../models/userModel");
 const router = express.Router();
 router.post("/", async (req, res) => {
   try {
-    const userLogin = await Login.create(req.body);
+    const userLogin = req.body;
     const userSignup = await Register.find().lean().exec();
     let loggedin = false;
     for (let i = 0; i < userSignup.length; i++) {
@@ -19,19 +19,20 @@ router.post("/", async (req, res) => {
         userSignup[i].email == userLogin.email &&
         userSignup[i].password != userLogin.password
       ) {
-        return res.status(400).send("wrong password");
+        return res.status(410).send({ message: "wrong password" });
       }
     }
     if (loggedin == true) {
       const user = await User.find({ email: userLogin.email });
       console.log(user);
       if (user.length > 0) {
-        return res.status(200).send(user);
+        const loginUser = await Login.create(userLogin);
+        return res.status(200).send({ user: user });
       } else {
-        return res.status(201).send("Add details");
+        return res.status(201).send({ message: "Add details" });
       }
     } else {
-      return res.status(404).send("Signup first");
+      return res.status(392).send({ message: "Signup first" });
     }
   } catch (error) {
     return res.status(500).send(error);
