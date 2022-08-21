@@ -1,0 +1,25 @@
+.payment-selection {
+  border: 1px solid;
+  padding: 20px;
+  width: 40%;
+  margin: auto;
+  background-color: rgb(120, 120, 120);
+  color: white;
+}
+.option {
+  flex: 1;
+  border: 1px solid rgb(120, 120, 120);
+  padding: 10px;
+}
+#active {
+  background-color: rgb(120, 120, 120);
+  color: white;
+  border: 1px solid white;
+}
+.selected {
+  background-color: white;
+  margin: 30px 0px;
+  padding: 20px;
+  color: black;
+  height: 280px;
+}

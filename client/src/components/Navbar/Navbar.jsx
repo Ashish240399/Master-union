@@ -35,8 +35,16 @@ const Navbar = () => {
           <div>
             <Link to="/login">Login</Link>
           </div>
-          <div>
-            <Link to="/student-details">Add Details</Link>
+          <div
+            onClick={() => {
+              if (userLoggedin == null) {
+                alert("You must be logged in to continue");
+              } else {
+                navigate("/student-details");
+              }
+            }}
+          >
+            Add Details
           </div>
           <PersonOutlineIcon />
         </div>
@@ -49,19 +57,6 @@ const Navbar = () => {
             justifyContent: "space-between",
           }}
         >
-          {/* {(userDetails.length !== undefined ||
-            userDetails.first_name !== undefined) && (
-            <div
-              onClick={() => {
-                localStorage.removeItem("email");
-                dispatch(user({}));
-                navigate("/");
-              }}
-            >
-              Logout
-            </div>
-          )} */}
-
           <div>
             {userDetails !== undefined ? (
               <div
@@ -73,6 +68,10 @@ const Navbar = () => {
               >
                 <div
                   onClick={() => {
+                    fetch(`http://localhost:5000/login/${userLoggedin}`, {
+                      method: "DELETE",
+                      headers: { "Content-Type": "application/json" },
+                    });
                     localStorage.removeItem("email");
                     dispatch(user({}));
                     navigate("/");
@@ -95,6 +94,10 @@ const Navbar = () => {
               >
                 <div
                   onClick={() => {
+                    fetch(`http://localhost:5000/login/${userLoggedin}`, {
+                      method: "DELETE",
+                      headers: { "Content-Type": "application/json" },
+                    });
                     localStorage.removeItem("email");
                     dispatch(user({}));
                     navigate("/");
@@ -124,8 +127,16 @@ const Navbar = () => {
                 >
                   Logout
                 </div>
-                <div>
-                  <Link to="/student-details">Add Details</Link>
+                <div
+                  onClick={() => {
+                    if (userLoggedin == null) {
+                      alert("You must be logged in to continue");
+                    } else {
+                      navigate("/student-details");
+                    }
+                  }}
+                >
+                  Add Details
                 </div>
                 <PersonOutlineIcon />
               </div>

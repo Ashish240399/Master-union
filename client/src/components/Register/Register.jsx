@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
 const Register = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -27,6 +28,7 @@ const Register = () => {
         alert("Email already registered");
       } else if (response.status == 200) {
         alert("Registered successfully");
+        navigate("/login");
       }
     });
   };

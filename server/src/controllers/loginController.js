@@ -38,5 +38,12 @@ router.post("/", async (req, res) => {
     return res.status(500).send(error);
   }
 });
-
+router.delete("/:email", async (req, res) => {
+  try {
+    const user = await Login.deleteOne({ email: req.params.email });
+    return res.status(200).send({ message: "User deleted successfully" });
+  } catch (error) {
+    return res.send({ message: "error deleting user" });
+  }
+});
 module.exports = router;
